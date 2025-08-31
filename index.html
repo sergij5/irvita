@@ -4,13 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IrVita Grooming Salon</title>
-  <!-- Добавь это в <head> перед закрывающим </head> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-FVbcU9Kp4xly4fdK3T3L5m2cyGPFlmkDbDw1H+9PZLkCdL0C9P3zWFMJsMzZHD71z+YzN16wZsTxQQN6y3rXQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-FVbcU9Kp4xly4fdK3T3L5m2cyGPFlmkDbDw1H+9PZLkCdL0C9P3zWFMJsMzZHD71z+YzN16wZsTxQQN6y3rXQw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   <style>
     @font-face {
       font-family: 'Akrobat';
@@ -40,54 +35,52 @@
       overflow-x: hidden;
       min-height: 100vh;
       background-image: radial-gradient(circle at 10% 20%, rgba(160, 218, 219, 0.2) 0%, rgba(224, 242, 241, 1) 90%);
+      padding: 15px;
     }
 
     #logo {
-      position: absolute;
-      font-size: clamp(32px, 8vw, 80px);
+      position: relative;
+      font-size: clamp(28px, 8vw, 60px);
       color: var(--primary-color);
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       text-transform: uppercase;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      text-align: center;
+      margin: 20px auto;
       z-index: 1000;
       transition: all 1s ease;
-      margin: 0;
-      white-space: nowrap;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
       font-weight: 800;
+      width: 100%;
+      padding: 0 10px;
     }
 
     #content-container {
-      position: absolute;
-      top: 55%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
+      position: relative;
+      width: 100%;
       max-width: 1200px;
+      margin: 20px auto;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 30px;
+      gap: 20px;
       opacity: 0;
       transition: opacity 1s ease;
       z-index: 500;
-      padding: 30px;
+      padding: 20px;
       background: var(--light-bg);
-      border-radius: 24px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.3);
     }
 
     #about-image-container {
-      flex: 1 1 300px;
+      width: 100%;
       max-width: 500px;
       position: relative;
       overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 10px 10px 30px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
     }
 
     #about-image {
@@ -98,52 +91,45 @@
     }
 
     #about-text {
-      flex: 1 1 300px;
+      width: 100%;
       color: var(--text-color);
       font-family: 'Akrobat', sans-serif;
-      font-size: clamp(1rem, 1.5vw, 1.4rem);
+      font-size: clamp(1rem, 4vw, 1.4rem);
       font-weight: bold;
-      line-height: 1.6;
-      padding: 20px;
-      position: relative;
-      text-align: left;
+      line-height: 1.5;
+      padding: 15px;
+      text-align: center;
       white-space: pre-line;
     }
 
     #about-text::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      height: 100%;
-      width: 4px;
-      background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-      border-radius: 4px;
+      display: none;
     }
 
     .language-switcher {
-      position: fixed;
-      top: 3vh;
-      right: 3vw;
+      position: relative;
+      margin: 20px auto;
       z-index: 2000;
       display: flex;
-      gap: 15px;
-      background: rgba(255,255,255,0.7);
-      padding: 10px 15px;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.9);
+      padding: 12px 20px;
       border-radius: 50px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       backdrop-filter: blur(5px);
       border: 1px solid rgba(255,255,255,0.2);
+      width: fit-content;
     }
 
     .language-btn {
       background: none;
       border: none;
-      padding: 8px 20px;
+      padding: 10px 20px;
       border-radius: 50px;
       cursor: pointer;
       font-family: 'Montserrat', sans-serif;
-      font-size: clamp(12px, 1.3vw, 16px);
+      font-size: 16px;
       font-weight: 600;
       color: var(--primary-color);
       transition: all 0.3s ease;
@@ -183,104 +169,172 @@
 
     .decoration {
       position: fixed;
-      width: 300px;
-      height: 300px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(248,197,55,0.15) 0%, rgba(248,197,55,0) 70%);
       z-index: -1;
     }
 
     .decoration-1 {
-      top: -100px;
-      left: -100px;
+      top: -50px;
+      left: -50px;
     }
 
     .decoration-2 {
-      bottom: -150px;
-      right: -100px;
+      bottom: -50px;
+      right: -50px;
     }
 
-    #knop {
+    /* Стили для квадратных кнопок */
+    .square-buttons {
       display: flex;
       justify-content: center;
-      gap: 24px;
-      margin-top: 24px;
+      gap: 15px;
+      margin-top: 20px;
       width: 100%;
+      flex-wrap: wrap;
     }
 
-    #knop button {
-      background-color: #007bff;
+    .square-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary-color), #2a9d8f);
       color: white;
       border: none;
-      border-radius: 12px;
-      padding: 14px 20px;
-      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      transition: background 0.2s ease;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      font-size: 18px;
     }
 
-    #knop button i {
-      pointer-events: none;
+    .square-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #2a9d8f, var(--primary-color));
     }
 
-    #knop button:hover {
-      background-color: #0056b3;
+    .square-btn:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
+    /* Плавные переходы для всех интерактивных элементов */
+    #logo, #content-container, .language-btn, .square-btn {
+      transition: all 0.3s ease;
+    }
+
+    /* Улучшение читаемости текста */
+    #about-text p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Мобильная версия */
     @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
       #logo {
-        font-size: 10vw;
-        top: 15%;
-        transform: translate(-50%, 0);
-        left: 50%;
-        white-space: normal;
-        width: 100%;
-        text-align: center;
+        font-size: clamp(24px, 7vw, 40px);
+        margin: 15px auto;
       }
 
       #content-container {
-        flex-direction: column;
-        top: 55%;
-        padding: 20px;
-        width: 95%;
-      }
-
-      #about-image-container {
-        width: 100%;
-        max-height: 50vh;
-      }
-
-      #about-image {
-        max-height: 50vh;
+        padding: 15px;
+        margin: 15px auto;
+        gap: 15px;
       }
 
       #about-text {
-        font-size: 1rem;
-        padding-left: 10px;
-        text-align: center;
-      }
-
-      #about-text::before {
-        display: none;
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
+        padding: 10px;
       }
 
       .language-switcher {
-        top: 2vh;
-        right: 50%;
-        transform: translateX(50%);
-        gap: 10px;
-        padding: 8px 15px;
+        margin: 15px auto;
+        padding: 10px 15px;
       }
 
-      #knop {
-        flex-direction: column;
+      .language-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+
+      .square-buttons {
+        gap: 10px;
+        margin-top: 15px;
+      }
+      
+      .square-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+      }
+
+      .decoration {
+        width: 150px;
+        height: 150px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #logo {
+        font-size: clamp(20px, 6vw, 32px);
+        margin: 10px auto;
+      }
+
+      #content-container {
+        padding: 12px;
+        margin: 10px auto;
         gap: 12px;
       }
 
-      #knop button {
-        width: 100%;
-        padding: 12px;
+      #about-text {
+        font-size: clamp(0.8rem, 3.5vw, 1rem);
+        padding: 8px;
+        line-height: 1.4;
+      }
+
+      .language-switcher {
+        margin: 10px auto;
+        padding: 8px 12px;
+      }
+
+      .language-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+
+      .square-buttons {
+        gap: 8px;
+        margin-top: 12px;
+      }
+      
+      .square-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+      }
+
+      .decoration {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .decoration-1 {
+        top: -30px;
+        left: -30px;
+      }
+      
+      .decoration-2 {
+        bottom: -30px;
+        right: -30px;
       }
     }
   </style>
@@ -289,10 +343,39 @@
   <div class="decoration decoration-1"></div>
   <div class="decoration decoration-2"></div>
 
-  <h1 id="logo">IrVita grooming</h1>
-  <div id="root"></div>
+  <div class="language-switcher">
+    <button class="language-btn" id="ru-btn">RU</button>
+    <button class="language-btn" id="lv-btn">LV</button>
+  </div>
 
-  <script type="text/babel">
+  <h1 id="logo">IrVita grooming</h1>
+  
+  <div id="content-container">
+    <div id="about-image-container">
+      <img 
+        id="about-image" 
+        src="foto/lover.png" 
+        alt="Pet grooming"
+        onError="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTVlNWU1Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZmlsbD0iIzg4OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkdyb29taW5nIFNhbG9uPC90ZXh0Pjwvc3ZnPg=='"
+      />
+    </div>
+    <div id="about-text">
+      <p id="description-text"></p>
+    </div>
+    <div class="square-buttons">
+      <button class="square-btn" onclick="handleButtonClick('https://example.com/home')">
+        <i class="fas fa-home"></i>
+      </button>
+      <button class="square-btn" onclick="handleButtonClick('https://example.com/settings')">
+        <i class="fas fa-cog"></i>
+      </button>
+      <button class="square-btn" onclick="handleButtonClick('https://example.com/about')">
+        <i class="fas fa-info-circle"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
     const translations = {
       ru: {
         title: "IrVita grooming",
@@ -318,67 +401,57 @@ Uzticiet savu četrkājaino draugu profesionāļiem ar 10 gadu pieredzi!`
       }
     };
 
-    function App() {
-      const [language, setLanguage] = React.useState(null);
+    let currentLanguage = null;
 
-      const startAnimation = (lang) => {
-        setLanguage(lang);
+    function startAnimation(lang) {
+      currentLanguage = lang;
 
-        const logo = document.getElementById('logo');
-        const contentContainer = document.getElementById('content-container');
+      const logo = document.getElementById('logo');
+      const contentContainer = document.getElementById('content-container');
+      const ruBtn = document.getElementById('ru-btn');
+      const lvBtn = document.getElementById('lv-btn');
 
-        // Анимация логотипа
-        logo.style.top = '30px';
-        logo.style.left = '30px';
-        logo.style.fontSize = 'clamp(24px, 3vw, 50px)';
-        logo.style.transform = 'translate(0, 0)';
-        logo.style.color = 'var(--primary-color)';
+      // Устанавливаем активный класс для кнопок языка
+      if (lang === 'ru') {
+        ruBtn.classList.add('active');
+        lvBtn.classList.remove('active');
+      } else {
+        lvBtn.classList.add('active');
+        ruBtn.classList.remove('active');
+      }
 
-        setTimeout(() => {
-          contentContainer.style.opacity = '1';
-        }, 800);
-      };
+      // Анимация логотипа
+      logo.style.fontSize = 'clamp(24px, 6vw, 40px)';
+      logo.style.margin = '10px auto';
 
-      return (
-        <div>
-          <div className="language-switcher">
-            <button 
-              className={`language-btn ${language === 'ru' ? 'active' : ''}`}
-              onClick={() => startAnimation('ru')}
-            >
-              RU
-            </button>
-            <button 
-              className={`language-btn ${language === 'lv' ? 'active' : ''}`}
-              onClick={() => startAnimation('lv')}
-            >
-              LV
-            </button>
-          </div>
+      // Обновляем текст
+      document.getElementById('description-text').textContent = translations[lang].description;
 
-          <div id="content-container">
-            <div id="about-image-container">
-              <img 
-                id="about-image" 
-                src="foto/lover.png" 
-                alt="Pet grooming"
-              />
-            </div>
-            <div id="about-text">
-              {language && <p>{translations[language].description}</p>}
-            </div>
-            <div id="knop">
-              <button ><i class="fas fa-home"></i></button>
-              <button><i class="fas fa-cog"></i></button>
-              <button><i class="fas fa-info-circle"></i></button>
-            </div>
-          </div>
-        </div>
-      );
+      // Показываем контент
+      contentContainer.style.opacity = '1';
     }
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
+    // Обработчик клика по кнопке
+    function handleButtonClick(link) {
+      if (link) {
+        window.open(link, '_blank');
+      }
+    }
+
+    // Инициализация
+    window.addEventListener('load', function() {
+      // Добавляем обработчики для кнопок языка
+      document.getElementById('ru-btn').addEventListener('click', function() {
+        startAnimation('ru');
+      });
+      
+      document.getElementById('lv-btn').addEventListener('click', function() {
+        startAnimation('lv');
+      });
+      
+      // Автоматически запускаем русскую версию
+      startAnimation('ru');
+    });
   </script>
 </body>
 </html>
