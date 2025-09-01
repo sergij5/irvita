@@ -406,13 +406,13 @@ Uzticiet savu četrkājaino draugu profesionāļiem ar 10 gadu pieredzi!`
       {
         id: 1,
         icon: 'fas fa-home', // Иконка FontAwesome
-        imagePath: 'images/button1.jpg', // Укажите путь к изображению для этой кнопки
+        imagePath: 'foto/insta.png', // Укажите путь к изображению для этой кнопки
         link: 'https://example.com/home' // Укажите ссылку для этой кнопки
       },
       {
         id: 2,
-        icon: "foto/galer.png",
-        imagePath: 'images/button2.jpg',
+        icon: "galer.png",
+        imagePath: 'foto/galer.png',
         link: 'photo.html'
       },
       {
@@ -530,7 +530,10 @@ Uzticiet savu četrkājaino draugu profesionāļiem ar 10 gadu pieredzi!`
                   onClick={() => handleButtonClick(button.link)}
                   title={`Button ${button.id}`} // Всплывающая подсказка
                 >
-                  <i className={button.icon}></i>
+                  {button.imagePath
+                    ? <img src={button.imagePath} alt="icon" style={{width: '32px', height: '32px'}} />
+                    : <i className={button.icon}></i>
+                  }
                 </button>
               ))}
             </div>
